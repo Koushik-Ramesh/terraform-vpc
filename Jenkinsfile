@@ -5,7 +5,7 @@ pipeline {
     }
     parameters {
         choice(name: 'ENV', choices: ['dev', 'prod'], description: 'Select your Environment')
-        choice(name: 'ACTION', choices: ['apply', 'Destroy'], description: 'Select your Action')
+        choice(name: 'ACTION', choices: ['apply', 'destroy'], description: 'Select your Action')
     }
     stages {
         stage('Terraform init') {
