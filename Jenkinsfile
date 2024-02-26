@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    options {
+        ansiColor('xterm')
+    }
     parameters {
         choice(name: 'ENV', choices: ['dev', 'prod'], description: 'Select your Environment')
     }
@@ -17,7 +20,7 @@ pipeline {
         }
         stage('Terraform Apply') {
             steps {
-                sh "terraform plan -auto-approve -var-file=env-${ENV}/${ENV}.tfvars"
+                sh "terraform apply -auto-approve -var-file=env-${ENV}/${ENV}.tfvars"
             }
         }
     }
